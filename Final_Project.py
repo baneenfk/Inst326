@@ -8,3 +8,4 @@ class statistical_computaions():
     def standard_deviation():
     def confidence_interal():
     def relative_entropy():
+        #test
