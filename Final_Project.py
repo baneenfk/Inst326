@@ -1,4 +1,7 @@
 class credit_card(): 
+    """
+    
+    """
     def __init__(self):
         
     def extract: 
@@ -6,6 +9,8 @@ class credit_card():
 class statistical_computaions(): 
     #def mean(): 
     #def standard_deviation():
+    
+    #This is to reptitive. We need to add more python techniques.
     
 #test
 
