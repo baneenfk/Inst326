@@ -4,8 +4,11 @@ class credit_card():
     def extract: 
         
 class statistical_computaions(): 
-    def mean(): 
-    def standard_deviation():
+    #def mean(): 
+    #def standard_deviation():
+    
+#test
+
     def confidence_interal():
     def relative_entropy():
         #test
