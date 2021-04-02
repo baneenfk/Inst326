@@ -3,6 +3,8 @@ class credit_card():
     
     """
     def __init__(self):
+        """
+        """
         
     def extract: 
         
@@ -17,3 +19,4 @@ class statistical_computaions():
     def confidence_interal():
     def relative_entropy():
         #test
+        
