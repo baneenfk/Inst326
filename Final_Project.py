@@ -1,5 +1,10 @@
 class credit_card(): 
-    """ This is our first class 
+    """ This is our first class used to extract information we want to pull out
+    from our datasets.
+    
+    Methods:
+    init
+    extract
     
     """
     def __init__(self):
@@ -7,6 +12,8 @@ class credit_card():
     def extract: 
         
 class statistical_computaions(): 
+    """
+    """
     #def mean(): 
     #def standard_deviation():
     
