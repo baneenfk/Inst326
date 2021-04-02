@@ -1,5 +1,5 @@
 class credit_card(): 
-    """
+    """ This is our first class 
     
     """
     def __init__(self):
