@@ -24,6 +24,9 @@ class credit_card_info():
         """ The method will seperate the date column into two columns date and 
             time.
             Args: 
+            
+            Side effects: 
+                Modify the dictionary date key
         """
 class statistical_computaions(): 
     """ This class will determine if transactions are irregualr and identify 
@@ -86,10 +89,14 @@ def main:
     
     Args:
         
+    Raises:
+        KeyValueError: The name must be in the CSV file.
         
     Side effects:
         
     """  
+    
 
 if __name__ == "__main__":
     main()
+    
