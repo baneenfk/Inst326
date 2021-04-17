@@ -10,7 +10,7 @@ class credit_card_info():
     
     def __init__(self,file):
         """ The method exctarcts the databse as a DataFrame. Then creates a new 
-            DataFrame with only the columns required.  
+            DataFrame with only the columns required.
             Args:
                 file(csv file): The database of credit card transactions.
         """
@@ -20,11 +20,11 @@ class credit_card_info():
             Args:
                 file(csv file): The database of credit card transactions.
         """
-    def adjust(self): 
+    def adjust(self,dict): 
         """ The method will seperate the date column into two columns date and 
             time.
             Args: 
-            
+                 dict(str): The dictionary of credit cars transactions. 
             Side effects: 
                 Modify the dictionary date key
         """
@@ -86,16 +86,16 @@ class statistical_computaions():
 def main:
     """The main function will allow the user of the program to enter a credit 
         card owners name then will return the statistical_computaions.
-    
-    Args:
-        
-    Raises:
-        KeyValueError: The name must be in the CSV file.
-        
-    Side effects:
-        
-    """  
-    
+        Args:
+            first_name(str): This is the first name of the card holder.
+            last_name(str): This is the last name of the card holder.
+            amount(float): This is the amount of the charge. 
+            date(int): This is the date of the tansaction.  
+        Raises:
+            KeyValueError: The name must be in the CSV file.
+        Returns:
+            str: The iregular credit card transcations. 
+    """    
 
 if __name__ == "__main__":
     main()
