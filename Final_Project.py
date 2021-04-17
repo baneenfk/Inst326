@@ -84,7 +84,7 @@ class statistical_computaions():
         """      
            
 def main:
-    """The main function will allow the user of the program to enter a credit 
+    """ The main function will allow the user of the program to enter a credit 
         card owners name then will return the statistical_computaions.
         Args:
             first_name(str): This is the first name of the card holder.
