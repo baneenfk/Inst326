@@ -83,7 +83,7 @@ class statistical_computaions():
                 line graph: Of all transcations.
         """      
            
-def main:
+def main(first_name, last_name, amount, date):
     """ The main function will allow the user of the program to enter a credit 
         card owners name then will return the statistical_computaions.
         Args:
