@@ -1,5 +1,8 @@
-import pandas as pandas
+import numpy as np
+import pandas as pd
 import matplotlib.pylot as plt
+
+
 class credit_card_info(): 
     """ This is our first class used to extract information we want to pull out
         from our datasets.
@@ -14,12 +17,18 @@ class credit_card_info():
             Args:
                 file(csv file): The database of credit card transactions.
         """
-        
+        file = pd.read_csv('fraudTest1.csv')
+        self.df = pd.dataframe(file)
+        cols = [2,3,4,5,6]
+        self.df = self.df[self.df.columns[cols]]
+         
     def convert(self,file): 
         """ The method converts the DataFrame into a dictionary.
             Args:
                 file(csv file): The database of credit card transactions.
         """
+        convert_file = []
+        
     def adjust(self,dict): 
         """ The method will seperate the date column into two columns date and 
             time.
