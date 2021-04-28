@@ -27,7 +27,7 @@ class credit_card_info():
             Args:
                 file(csv file): The database of credit card transactions.
         """
-        convert_file = []
+        d = self.df.to_dict(orient='index')
         
     def adjust(self,dict): 
         """ The method will seperate the date column into two columns date and 
@@ -37,6 +37,7 @@ class credit_card_info():
             Side effects: 
                 Modify the dictionary date key
         """
+        
 class statistical_computaions(): 
     """ This class will determine if transactions are irregualr and identify 
         means. 
