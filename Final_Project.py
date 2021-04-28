@@ -18,16 +18,16 @@ class credit_card_info():
                 file(csv file): The database of credit card transactions.
         """
         file = pd.read_csv('fraudTest1.csv')
-        self.df = pd.dataframe(file)
+        df = pd.dataframe(file)
         cols = [2,3,4,5,6]
-        self.df = self.df[self.df.columns[cols]]
+        df = df[df.columns[cols]]
          
     def convert(self,file): 
         """ The method converts the DataFrame into a dictionary.
             Args:
                 file(csv file): The database of credit card transactions.
         """
-        d = self.df.to_dict(orient='index')
+        d = df.to_dict(orient='index')
         
         
     def adjust(self,dict): 
@@ -92,9 +92,9 @@ class statistical_computaions():
             Returns:
                 line graph: Of all transcations.
         """      
-        amount =  self.df['amt']
-        date = self.df['trans_date']
-        line_graph = self.df.plot.line(x=amount, y=date)
+        amount =  df['amt']
+        date = df['trans_date']
+        line_graph = df.plot.line(x=amount, y=date)
         print(line_graph)
         
 def main(first_name, last_name, amount, date):
