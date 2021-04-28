@@ -27,7 +27,8 @@ class credit_card_info():
             Args:
                 file(csv file): The database of credit card transactions.
         """
-        convert_file = []
+        d = self.df.to_dict(orient='index')
+        
         
     def adjust(self,dict): 
         """ The method will seperate the date column into two columns date and 
@@ -91,6 +92,9 @@ class statistical_computaions():
             Returns:
                 line graph: Of all transcations.
         """      
+        amount =  self.df['amt']
+        date = self.df['trans_date']
+        line_graph = self.df.plot.line(x=amount, y=date)
            
 def main(first_name, last_name, amount, date):
     """ The main function will allow the user of the program to enter a credit 
