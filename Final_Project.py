@@ -83,6 +83,7 @@ class statistical_computaions():
                 int: The number of transcations that occur at an irrgular time.
         """
         
+        
     def transactions(self, amount, date): 
         """ The method creates a line graph with the date of the transaction and
             the amount. 
