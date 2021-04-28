@@ -95,7 +95,8 @@ class statistical_computaions():
         amount =  self.df['amt']
         date = self.df['trans_date']
         line_graph = self.df.plot.line(x=amount, y=date)
-           
+        print(line_graph)
+        
 def main(first_name, last_name, amount, date):
     """ The main function will allow the user of the program to enter a credit 
         card owners name then will return the statistical_computaions.
