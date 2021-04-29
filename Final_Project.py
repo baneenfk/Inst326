@@ -28,7 +28,7 @@ class Credit_Card_Holder():
         df2 = df[["first", "last", "amt"]]
         df2[['date', 'time']] = df['trans_date_trans_time'].str.split(' ', expand=True)
 
-    def user(self,dict): 
+    def user(self,x,y): 
         """ The method will seperate the date column into two columns date and 
             time.
             Args: 
@@ -36,37 +36,13 @@ class Credit_Card_Holder():
             Side effects: 
                 Modify the dictionary date key
         """
-        first_filter = df2['first'] == "Jeff"
-        last_filter = df2['last'] == "Elliott"
+        x = self.first_name
+        y = self.last_name
+        first_filter = df2['first'] == x
+        last_filter = df2['last'] == y
         combo_filter = first_filter & last_filter
         first_last = df2[combo_filter]
-        value1 = input("Enter cardholders FIRST Name:\n")
-        value2 = input("Enter cardholders LAST Name:\n")
-
         
-class statistical_computaions(): 
-    """ This class will determine if transactions are irregualr and identify 
-        means. 
-        Attributes:
-            first_name(str): This is the first name of the card holder.
-            last_name(str): This is the last name of the card holder.
-            amount(float): This is the amount of the charge. 
-            date(int): This is the date of the tansaction. 
-     """       
-    def __init__(self):
-        """ Inititalizes the first name, last name, amount and date.
-            Args:
-                first_name(str): This is the first name of the card holder.
-                last_name(str): This is the last name of the card holder.
-                amount(float): This is the amount of the charge. 
-                date(int): This is the date of the tansaction.
-                time(int): This is the time of the transaction. 
-        """
-        self.first_name = first
-        self.last_name = last
-        self.amount  = amt
-        self.date = date
-        self.time = time
     
     def mean_amount(self, amount): 
         """ The method determines the mean of transactions. 
@@ -77,7 +53,7 @@ class statistical_computaions():
                 float: The mean of the credit card amounts.
         """
         mean = first_last['amt'].mean()
-        print(f{'The mean of all charges are {mean}')
+        print(f'The mean of all charges are {mean}')
 
     def irregular_times(self, time): 
         """ The method determines if the time a transaction occured is at a 
@@ -88,8 +64,7 @@ class statistical_computaions():
             Returns:
                 int: The transactions that occur at an irrgular time.
         """
-        if hour == 0 or hour == 1 or hour == 2 or hour ==3 or hour ==4 or 
-        hour ==5 or hour == 22 
+        if hour == 0 or hour == 1 or hour == 2 or hour ==3 or hour ==4 or hour ==5 or hour == 22:
             result = 1 
         else:
             result = 0 
@@ -108,7 +83,7 @@ class statistical_computaions():
         else:
             count += 0
         return count
-        print(f{'There are {count} charges that occured at irregular times.')
+        print(f'There are {count} charges that occured at irregular times.')
         
     def irregular_amount(self, amount): 
         """ The method determines if a transaction is an a irregular 
@@ -125,7 +100,7 @@ class statistical_computaions():
         else:
             count += 0
         return count
-        print(f{'There are {count} charges that raise a flag!') 
+        print(f'There are {count} charges that raise a flag!') 
         
     def transactions(self, amount, date): 
         """ The method creates a line graph with the date of the transaction and
@@ -154,11 +129,25 @@ def main(first_name, last_name, amount, date):
         Returns:
             str: The iregular credit card transcations. 
     """ 
-    credit_card = Credit_card_holder():
-    credit_card.user()
+    credit_card = Credit_card_holder(file)
+    credit_card.user(x,y)
     credit_card.mean_amount()
     credit_card.irregular_times_count()
-    credit_card.
+    credit_card.irregular_amount()
+    credit_card.transaction()
+    
+    x = value1
+    y = value2
+
+    value1 = input("Enter cardholders FIRST Name:\n")
+    value2 = input("Enter cardholders LAST Name:\n")
+ 
+    return 
+    
+    return credit_card.mean_amount()
+    return credit_card.irregular_times_count()
+    return credit_card.irregular_amount()
+    return credit_card.transaction()
  
 if __name__ == "__main__":
     main()
