@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pylot as plt
 
 
-class credit_card_holder(): 
+class Credit_Card_Holder(): 
     """ This is our first class used to extract information we want to pull out
         from our datasets.
         Attributes:
@@ -17,11 +17,15 @@ class credit_card_holder():
             Args:
                 file(csv file): The database of credit card transactions.
         """
- 
+        self.first_name = first
+        self.last_name = last
+        self.amount  = amt
+        self.date = date
+        self.time = time
+        
         file = 'fraudTest1.csv'
         df = df = pd.read_csv(file)
         df2 = df[["first", "last", "amt"]]
-        print(df2)
         df2[['date', 'time']] = df['trans_date_trans_time'].str.split(' ', expand=True)
 
     def user(self,dict): 
@@ -36,7 +40,8 @@ class credit_card_holder():
         last_filter = df2['last'] == "Elliott"
         combo_filter = first_filter & last_filter
         first_last = df2[combo_filter]
-        print(first_last)
+        value1 = input("Enter cardholders FIRST Name:\n")
+        value2 = input("Enter cardholders LAST Name:\n")
 
         
 class statistical_computaions(): 
@@ -89,7 +94,7 @@ class statistical_computaions():
         else:
             result = 0 
         return result
-    def irregular_times(self, time): 
+    def irregular_times_count(self, time): 
         """ !!! Change These DOCSTRINGS!!!
             Args:
                 name(str): The name of the credit card holder.
@@ -102,6 +107,7 @@ class statistical_computaions():
             count += 1
         else:
             count += 0
+        return count
         print(f{'There are {count} charges that occured at irregular times.')
         
     def irregular_amount(self, amount): 
@@ -118,6 +124,7 @@ class statistical_computaions():
             count += 1
         else:
             count += 0
+        return count
         print(f{'There are {count} charges that raise a flag!') 
         
     def transactions(self, amount, date): 
@@ -132,7 +139,7 @@ class statistical_computaions():
         amount =  df['amt']
         date = df['date']
         line_graph = df.plot.line(x=amount, y=date)
-        print(line_graph)
+        return(line_graph)
         
 def main(first_name, last_name, amount, date):
     """ The main function will allow the user of the program to enter a credit 
@@ -147,7 +154,12 @@ def main(first_name, last_name, amount, date):
         Returns:
             str: The iregular credit card transcations. 
     """ 
-       
+    credit_card = Credit_card_holder():
+    credit_card.user()
+    credit_card.mean_amount()
+    credit_card.irregular_times_count()
+    credit_card.
+ 
 if __name__ == "__main__":
     main()
     
