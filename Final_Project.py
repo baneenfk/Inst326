@@ -17,17 +17,16 @@ class Credit_Card_Holder():
             Args:
                 file(csv file): The database of credit card transactions.
         """
+        self.first_name = first
+        self.last_name = last
+        self.amount  = amt
+        self.date = date
+        self.time = time
+        
         file = 'fraudTest1.csv'
         df = df = pd.read_csv(file)
         df2 = df[["first", "last", "amt"]]
         df2[['date', 'time']] = df['trans_date_trans_time'].str.split(' ', expand=True)
-        
-        self.first_name = df2["first"]
-        self.last_name = df2["last"]
-        self.amount  = df2["amt"]
-        self.date = df2["date"]
-        self.time = df2["time"]
-        
 
     def user(self,x,y): 
         """ The method will seperate the date column into two columns date and 
@@ -153,5 +152,5 @@ def main(first_name, last_name, amount, date):
     return credit_card.transaction()
  
 if __name__ == "__main__":
-    main()
+    main():
     
