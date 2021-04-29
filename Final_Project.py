@@ -150,5 +150,5 @@ def main(first_name, last_name, amount, date):
     return credit_card.transaction()
  
 if __name__ == "__main__":
-    main()
+    main():
     
