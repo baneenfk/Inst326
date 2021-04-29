@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pylot as plt
 
 
-class credit_card_info(): 
+class credit_card_holder(): 
     """ This is our first class used to extract information we want to pull out
         from our datasets.
         Attributes:
@@ -11,30 +11,20 @@ class credit_card_info():
             amount, and date. 
     """
     
-    def __init__(self,file):
+    def __init__(self,file,df,df2):
         """ The method exctarcts the databse as a DataFrame. Then creates a new 
             DataFrame with only the columns required.
             Args:
                 file(csv file): The database of credit card transactions.
         """
-        file = pd.read_csv('fraudTest1.csv')
-        df = pd.dataframe(file)
-        cols = [2,3,4,5,6]
-        df = df[df.columns[cols]]
-         
-    def convert(self,file): 
-        """ The method converts the DataFrame into a dictionary.
-            Args:
-                file(csv file): The database of credit card transactions.
-        """
-<<<<<<< HEAD
-        d = self.df.to_dict(orient='index')
-=======
-        d = df.to_dict(orient='index')
-        
->>>>>>> 367a78da2c8311eaec8e25d5019f62f2ff748be7
-        
-    def adjust(self,dict): 
+ 
+        file = 'fraudTest1.csv'
+        df = df = pd.read_csv(file)
+        df2 = df[["first", "last", "amt"]]
+        print(df2)
+        df2[['date', 'time']] = df['trans_date_trans_time'].str.split(' ', expand=True)
+
+    def user(self,dict): 
         """ The method will seperate the date column into two columns date and 
             time.
             Args: 
@@ -42,6 +32,12 @@ class credit_card_info():
             Side effects: 
                 Modify the dictionary date key
         """
+        first_filter = df2['first'] == "Jeff"
+        last_filter = df2['last'] == "Elliott"
+        combo_filter = first_filter & last_filter
+        first_last = df2[combo_filter]
+        print(first_last)
+
         
 class statistical_computaions(): 
     """ This class will determine if transactions are irregualr and identify 
@@ -59,7 +55,13 @@ class statistical_computaions():
                 last_name(str): This is the last name of the card holder.
                 amount(float): This is the amount of the charge. 
                 date(int): This is the date of the tansaction.
+                time(int): This is the time of the transaction. 
         """
+        self.first_name = first
+        self.last_name = last
+        self.amount  = amt
+        self.date = date
+        self.time = time
     
     def mean_amount(self, amount): 
         """ The method determines the mean of transactions. 
@@ -69,7 +71,10 @@ class statistical_computaions():
             Returns:
                 float: The mean of the credit card amounts.
         """
-    def irregular_time(self, time): 
+        mean = first_last['amt'].mean()
+        print(f{'The mean of all charges are {mean}')
+
+    def irregular_times(self, time): 
         """ The method determines if the time a transaction occured is at a 
             irregular time. 
             Args:
@@ -78,6 +83,27 @@ class statistical_computaions():
             Returns:
                 int: The transactions that occur at an irrgular time.
         """
+        if hour == 0 or hour == 1 or hour == 2 or hour ==3 or hour ==4 or 
+        hour ==5 or hour == 22 
+            result = 1 
+        else:
+            result = 0 
+        return result
+    def irregular_times(self, time): 
+        """ !!! Change These DOCSTRINGS!!!
+            Args:
+                name(str): The name of the credit card holder.
+                time(int): The time the transaction took place. 
+            Returns:
+                int: The transactions that occur at an irrgular time.
+        """
+        count = 0
+        if time == 1:
+            count += 1
+        else:
+            count += 0
+        print(f{'There are {count} charges that occured at irregular times.')
+        
     def irregular_amount(self, amount): 
         """ The method determines if a transaction is an a irregular 
             amount. 
@@ -87,6 +113,12 @@ class statistical_computaions():
             Returns:
                 int: The number of transcations that occur at an irrgular time.
         """
+        count = 0
+        if amount >= 200 + mean:
+            count += 1
+        else:
+            count += 0
+        print(f{'There are {count} charges that raise a flag!') 
         
     def transactions(self, amount, date): 
         """ The method creates a line graph with the date of the transaction and
@@ -98,7 +130,7 @@ class statistical_computaions():
                 line graph: Of all transcations.
         """      
         amount =  df['amt']
-        date = df['trans_date']
+        date = df['date']
         line_graph = df.plot.line(x=amount, y=date)
         print(line_graph)
         
