@@ -116,7 +116,7 @@ class Credit_Card_Holder():
         amount =  df['amt']
         date = df['date']
         line_graph = df.plot.line(x=amount, y=date)
-        return(line_graph)
+        plt.show(line_graph)
         
 def main(first_name, last_name, amount, date):
     """ The main function will allow the user of the program to enter a credit 
