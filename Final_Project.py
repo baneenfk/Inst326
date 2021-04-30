@@ -153,4 +153,3 @@ def main(first_name, last_name, amount, date):
  
 if __name__ == "__main__":
     main()
-    
