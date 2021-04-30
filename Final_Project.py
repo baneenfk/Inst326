@@ -130,7 +130,7 @@ def main(first_name, last_name, amount, date):
             KeyValueError: The name must be in the CSV file.
         Returns:
             str: The iregular credit card transcations. 
-    """ 
+    """     
     credit_card = Credit_card_holder(file)
     credit_card.user(x,y)
     credit_card.mean_amount()
@@ -138,11 +138,11 @@ def main(first_name, last_name, amount, date):
     credit_card.irregular_amount()
     credit_card.transaction()
     
-    x = value1
-    y = value2
-
     value1 = input("Enter cardholders FIRST Name:\n")
     value2 = input("Enter cardholders LAST Name:\n")
+    
+    x = value1
+    y = value2
  
     return 
     
