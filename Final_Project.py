@@ -119,6 +119,7 @@ class Credit_Card_Holder():
         print(f'There are {count} charges that raise a flag!') 
         return count
     
+<<<<<<< HEAD
     #def transactions(self, amount, date): 
         #""" The method creates a line graph with the date of the transaction and
            # the amount. 
@@ -132,6 +133,21 @@ class Credit_Card_Holder():
         #date = df['date']
         #line_graph = df.plot.line(x=amount, y=date)
         #return(line_graph)
+=======
+    def transactions(self, amount, date): 
+        """ The method creates a line graph with the date of the transaction and
+            the amount. 
+            Args:
+                amount(float): This is the amount of the charge. 
+                date(int): This is the date of the tansaction. 
+            Returns:
+                line graph: Of all transcations.
+        """      
+        amount =  df['amt']
+        date = df['date']
+        line_graph = df.plot.line(x=amount, y=date)
+        plt.show(line_graph)
+>>>>>>> 768025de604c8f8ab3d96c3482ef95a8559db334
         
 def main(file):
     """ The main function will allow the user of the program to enter a credit 
@@ -145,16 +161,31 @@ def main(file):
             KeyValueError: The name must be in the CSV file.
         Returns:
             str: The iregular credit card transcations. 
+<<<<<<< HEAD
     """ 
     credit_card = Credit_Card_Holder(file)
     value1 = input("Enter cardholders FIRST Name:\n")
     value2 = input("Enter cardholders LAST Name:\n")
     credit_card.user(value1,value2)
+=======
+    """     
+    credit_card = Credit_card_holder(file)
+    credit_card.user(x,y)
+>>>>>>> 768025de604c8f8ab3d96c3482ef95a8559db334
     credit_card.mean_amount()
     x = credit_card.irregular_times
     credit_card.irregular_times_count(x)
     credit_card.irregular_amount()
     credit_card.transaction()
+<<<<<<< HEAD
+=======
+    
+    value1 = input("Enter cardholders FIRST Name:\n")
+    value2 = input("Enter cardholders LAST Name:\n")
+    
+    x = value1
+    y = value2
+>>>>>>> 768025de604c8f8ab3d96c3482ef95a8559db334
  
     '''return 
     
