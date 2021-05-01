@@ -11,6 +11,13 @@ class Credit_Card_Holder():
         Attributes:
             file(csv file): The database consisting of first name, last name, 
             amount, and date. 
+            df2(dataframe): The data consisting of first name, last name, 
+            amount, and date. 
+            first_name(str): The first name of the credit card holder.
+            last_name(str): The last name of the credit card holder.
+            amount(str): The amount of each transaction. 
+            date(str): The date of each transaction.
+            time(str): The amount of each transaction.
     """
     
     def __init__(self,file):
@@ -34,9 +41,9 @@ class Credit_Card_Holder():
         """ The method will seperate the date column into two columns date and 
             time.
             Args: 
-                 dict(str): The dictionary of credit cars transactions. 
-            Side effects: 
-                Modify the dictionary date key
+            first_name(str): The first name of the credit card holder.
+            last_name(str): The last name of the credit card holder. 
+
         """
         
         first_filter = self.df2['first'] == self.first_name
@@ -46,12 +53,8 @@ class Credit_Card_Holder():
         
     
     def mean_amount(self): 
-        """ The method determines the mean of transactions. 
-            Args:
-                name(str): The name of the credit card holder.
-                amount(float): The amount of a transaction. 
-            Returns:
-                float: The mean of the credit card amounts.
+        """ The method determines the mean of transactions and prints the amount. 
+
         """
         self.mean = self.first_last['amt'].mean()
         print(f'The mean of all charges are {self.mean}')
@@ -60,10 +63,6 @@ class Credit_Card_Holder():
         """ The method determines if the time a transaction occured is at a 
             irregular time. 
             Args:
-                name(str): The name of the credit card holder.
-                time(int): The time the transaction took place. 
-            Returns:
-                int: The transactions that occur at an irrgular time.
         """
         time_list = []
         for x in self.time:
@@ -80,7 +79,8 @@ class Credit_Card_Holder():
                     return time_list
     
     def irregular_times_count(self,time_list): 
-        """ !!! Change These DOCSTRINGS!!!
+        """ The method counts how many times transcations occured outside of 
+            regular business hours. 
             Args:
                 name(str): The name of the credit card holder.
                 time(int): The time the transaction took place. 
@@ -96,15 +96,15 @@ class Credit_Card_Holder():
         print(f'There are {count} charges that occured at irregular times.')
         return count
     
-    def irregular_amount(self): 
-        """ The method determines if a transaction is an a irregular 
+    """def irregular_amount(self): 
+         The method determines if a transaction is an a irregular 
             amount. 
             Args:
                 name(str): The name of the credit card holder.
                 amount(float): The amount of a transaction. 
             Returns:
                 int: The number of transcations that occur at an irrgular time.
-        """
+        
         amount_list = []
         count = 0
         for x in self.amount:
@@ -115,34 +115,28 @@ class Credit_Card_Holder():
                 else:
                     count += 0
         print(f'There are {count} charges that raise a flag!') 
-        
+       
     
     #def transactions(self, amount, date): 
-        #""" The method creates a line graph with the date of the transaction and
+        # The method creates a line graph with the date of the transaction and
            # the amount. 
            # Args:
                 #amount(float): This is the amount of the charge. 
                 #date(int): This is the date of the tansaction. 
             #Returns:
                 #line graph: Of all transcations.
-       #"""      
+       #      
         #amount =  df['amt']
         #date = df['date']
         #line_graph = df.plot.line(x=amount, y=date)
         #return(line_graph)
-        
+     """   
 def main(file):
     """ The main function will allow the user of the program to enter a credit 
         card owners name then will return the statistical_computaions.
         Args:
-            first_name(str): This is the first name of the card holder.
-            last_name(str): This is the last name of the card holder.
-            amount(float): This is the amount of the charge. 
-            date(int): This is the date of the tansaction.  
-        Raises:
-            KeyValueError: The name must be in the CSV file.
-        Returns:
-            str: The iregular credit card transcations. 
+            file(csv file): The database consisting of first name, last name, 
+            amount, and date.
     """ 
     credit_card = Credit_Card_Holder(file)
     value1 = input("Enter cardholders FIRST Name:\n")
@@ -151,8 +145,8 @@ def main(file):
     credit_card.mean_amount()
     x = credit_card.irregular_times
     credit_card.irregular_times_count(x)
-    credit_card.irregular_amount()
-    credit_card.transaction()
+    #credit_card.irregular_amount()
+    #credit_card.transaction()
  
     '''return 
     
