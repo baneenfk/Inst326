@@ -53,7 +53,7 @@ class Credit_Card_Holder():
             Returns:
                 float: The mean of the credit card amounts.
         """
-        self.mean = self.first_last['self.amt'].mean()
+        self.mean = self.first_last['amt'].mean()
         print(f'The mean of all charges are {self.mean}')
 
     def irregular_times(self): 
@@ -77,9 +77,9 @@ class Credit_Card_Holder():
                         result = 1 
                     else:
                         result = 0 
-                    return result
+                    return time_list
     
-    def irregular_times_count(self, time): 
+    def irregular_times_count(self,time_list): 
         """ !!! Change These DOCSTRINGS!!!
             Args:
                 name(str): The name of the credit card holder.
@@ -88,21 +88,15 @@ class Credit_Card_Holder():
                 int: The transactions that occur at an irrgular time.
         """
         count = 0
-            for x in self.time:
-            line = x.split(" ")
-            time_list.append(line)
-            for x in time_list:
-                line1 = x.split(':')
-                time_list1.apend(line1)
-        
-        if time == 1:
-            count += 1
-        else:
-            count += 0
+        for x in {time_list}:
+            if x == 1:
+                count += 1
+            else:
+                count += 0
         print(f'There are {count} charges that occured at irregular times.')
         return count
     
-    def irregular_amount(self, amount): 
+    def irregular_amount(self): 
         """ The method determines if a transaction is an a irregular 
             amount. 
             Args:
@@ -111,15 +105,18 @@ class Credit_Card_Holder():
             Returns:
                 int: The number of transcations that occur at an irrgular time.
         """
+        amount_list = []
         count = 0
-        if amount >= 200 + self.mean:
-            count += 1
-        else:
-            count += 0
+        for x in self.amount:
+            amount_list.append(x)
+            for x in amount_list:
+                if x >= 200 + self.mean:
+                    count += 1
+                else:
+                    count += 0
         print(f'There are {count} charges that raise a flag!') 
-        return count
+        
     
-<<<<<<< HEAD
     #def transactions(self, amount, date): 
         #""" The method creates a line graph with the date of the transaction and
            # the amount. 
@@ -133,21 +130,6 @@ class Credit_Card_Holder():
         #date = df['date']
         #line_graph = df.plot.line(x=amount, y=date)
         #return(line_graph)
-=======
-    def transactions(self, amount, date): 
-        """ The method creates a line graph with the date of the transaction and
-            the amount. 
-            Args:
-                amount(float): This is the amount of the charge. 
-                date(int): This is the date of the tansaction. 
-            Returns:
-                line graph: Of all transcations.
-        """      
-        amount =  df['amt']
-        date = df['date']
-        line_graph = df.plot.line(x=amount, y=date)
-        plt.show(line_graph)
->>>>>>> 768025de604c8f8ab3d96c3482ef95a8559db334
         
 def main(file):
     """ The main function will allow the user of the program to enter a credit 
@@ -161,31 +143,16 @@ def main(file):
             KeyValueError: The name must be in the CSV file.
         Returns:
             str: The iregular credit card transcations. 
-<<<<<<< HEAD
     """ 
     credit_card = Credit_Card_Holder(file)
     value1 = input("Enter cardholders FIRST Name:\n")
     value2 = input("Enter cardholders LAST Name:\n")
     credit_card.user(value1,value2)
-=======
-    """     
-    credit_card = Credit_card_holder(file)
-    credit_card.user(x,y)
->>>>>>> 768025de604c8f8ab3d96c3482ef95a8559db334
     credit_card.mean_amount()
     x = credit_card.irregular_times
     credit_card.irregular_times_count(x)
     credit_card.irregular_amount()
     credit_card.transaction()
-<<<<<<< HEAD
-=======
-    
-    value1 = input("Enter cardholders FIRST Name:\n")
-    value2 = input("Enter cardholders LAST Name:\n")
-    
-    x = value1
-    y = value2
->>>>>>> 768025de604c8f8ab3d96c3482ef95a8559db334
  
     '''return 
     
