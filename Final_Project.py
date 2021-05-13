@@ -72,7 +72,7 @@ class Credit_Card_Holder():
                 line1 = x.split(':')
                 time_list1.apend(line1)
                 for x[0] in time_list1:
-                    if hour == 0 or hour == 1 or hour == 2 or hour ==3 or hour ==4 or hour ==5 or hour == 22:
+                    if x == 0 or x == 1 or x == 2 or x ==3 or x ==4 or x ==5 or x == 22:
                         result = 1 
                     else:
                         result = 0 
@@ -104,7 +104,7 @@ class Credit_Card_Holder():
                 amount(float): The amount of a transaction. 
             Returns:
                 int: The number of transcations that occur at an irrgular time.
-        
+    
         amount_list = []
         count = 0
         for x in self.amount:
@@ -115,22 +115,22 @@ class Credit_Card_Holder():
                 else:
                     count += 0
         print(f'There are {count} charges that raise a flag!') 
-       
+    """
     
-    #def transactions(self, amount, date): 
-        # The method creates a line graph with the date of the transaction and
-           # the amount. 
-           # Args:
+    def transactions(self, amount, date): 
+        """The method creates a line graph with the date of the transaction and
+            the amount. 
+            Args:
                 #amount(float): This is the amount of the charge. 
                 #date(int): This is the date of the tansaction. 
-            #Returns:
-                #line graph: Of all transcations.
-       #      
-        #amount =  df['amt']
-        #date = df['date']
-        #line_graph = df.plot.line(x=amount, y=date)
-        #return(line_graph)
-     """   
+            Returns:
+                line graph: Of all transcations.
+        """    
+        amount =  df['amt']
+        date = df['date']
+        line_graph = df.plot.line(x=amount, y=date)
+        return(line_graph)
+       
 def main(file):
     """ The main function will allow the user of the program to enter a credit 
         card owners name then will return the statistical_computaions.
