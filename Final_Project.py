@@ -1,8 +1,9 @@
-#import numpy as np
+import numpy as np
 import sys
 import pandas as pd
 from argparse import ArgumentParser
-#import matplotlib.pylot as plt
+import matplotlib.pyplot as plt
+
 
 
 class Credit_Card_Holder(): 
@@ -30,7 +31,7 @@ class Credit_Card_Holder():
         df = pd.read_csv(file)
         df2 = df[["first", "last", "amt"]]
         df2[['date', 'time']] = df['trans_date_trans_time'].str.split(' ', expand=True)
-        self.df2 = df2 #(df2[['date', 'time']] = df['trans_date_trans_time'].str.split(' ', expand=True))
+        self.df2 = df2 
         self.first_name = self.df2["first"]
         self.last_name = self.df2["last"]
         self.amount  = self.df2["amt"]
@@ -45,18 +46,17 @@ class Credit_Card_Holder():
             last_name(str): The last name of the credit card holder. 
 
         """
-        
-        first_filter = self.df2['first'] == self.first_name
-        last_filter = self.df2['last'] == self.last_name
-        combo_filter = first_filter & last_filter
-        self.first_last = self.df2[combo_filter]
-        
-    
+        test = self.df2['first'] == first_name
+        test2 = self.df2['last'] == last_name
+        both = test & test2 
+        user_name = self.df2[both]
+        self.user_name = user_name
+        print(user_name)
     def mean_amount(self): 
         """ The method determines the mean of transactions and prints the amount. 
 
         """
-        self.mean = self.first_last['amt'].mean()
+        self.mean = self.user_name['amt'].mean()
         print(f'The mean of all charges are {self.mean}')
 
     def irregular_times(self): 
@@ -64,21 +64,19 @@ class Credit_Card_Holder():
             irregular time. 
             Args:
         """
-        time_list = []
-        for x in self.time:
-            line = x.split(" ")
-            time_list.append(line)
-            for x in time_list:
-                line1 = x.split(':')
-                time_list1.apend(line1)
-                for x[0] in time_list1:
-                    if x == 0 or x == 1 or x == 2 or x ==3 or x ==4 or x ==5 or x == 22:
-                        result = 1 
-                    else:
-                        result = 0 
-                    return time_list
+        vals = self.user_name["time"]
+        new = []
+        self.new = new
+        for x in vals:
+            if x == 0 or x == 1 or x == 2 or x ==3 or x ==4 or x ==5:
+                result = 1 
+                new.append(result)
+            else:
+                result = 0 
+        print(f'what is happening{new}')
+        print(vals)
     
-    def irregular_times_count(self,time_list): 
+    def irregular_times_count(self,x): 
         """ The method counts how many times transcations occured outside of 
             regular business hours. 
             Args:
@@ -88,36 +86,36 @@ class Credit_Card_Holder():
                 int: The transactions that occur at an irrgular time.
         """
         count = 0
-        for x in {time_list}:
+        for x in self.new:
             if x == 1:
                 count += 1
             else:
                 count += 0
         print(f'There are {count} charges that occured at irregular times.')
-        return count
+
     
-    """def irregular_amount(self): 
-         The method determines if a transaction is an a irregular 
+    def irregular_amount(self,x): 
+        """The method determines if a transaction is an a irregular 
             amount. 
             Args:
                 name(str): The name of the credit card holder.
                 amount(float): The amount of a transaction. 
             Returns:
                 int: The number of transcations that occur at an irrgular time.
-    
+        """
         amount_list = []
         count = 0
-        for x in self.amount:
+        for x in self.user_name["amt"]:
             amount_list.append(x)
             for x in amount_list:
-                if x >= 200 + self.mean:
-                    count += 1
+                if x >= 500 + self.mean:
+                     count += 1
                 else:
-                    count += 0
+                     count += 0
         print(f'There are {count} charges that raise a flag!') 
-    """
     
-    def transactions(self, amount, date): 
+    
+    def transactions(self): 
         """The method creates a line graph with the date of the transaction and
             the amount. 
             Args:
@@ -125,12 +123,10 @@ class Credit_Card_Holder():
                 #date(int): This is the date of the tansaction. 
             Returns:
                 line graph: Of all transcations.
-        """    
-        amount =  df['amt']
-        date = df['date']
-        line_graph = df.plot.line(x=amount, y=date)
-        return(line_graph)
-       
+        """
+        self.user_name.plot.scatter(x = "amt", y = "date", title = "Credit Card Transactions")
+        plt.show()
+    
 def main(file):
     """ The main function will allow the user of the program to enter a credit 
         card owners name then will return the statistical_computaions.
@@ -142,19 +138,12 @@ def main(file):
     value1 = input("Enter cardholders FIRST Name:\n")
     value2 = input("Enter cardholders LAST Name:\n")
     credit_card.user(value1,value2)
-    credit_card.mean_amount()
-    x = credit_card.irregular_times
+    x =credit_card.mean_amount()
+    y = credit_card.irregular_times()
     credit_card.irregular_times_count(x)
-    #credit_card.irregular_amount()
-    #credit_card.transaction()
+    credit_card.irregular_amount(y)
+    credit_card.transactions()
  
-    '''return 
-    
-    return credit_card.mean_amount()
-    return credit_card.irregular_times_count()
-    return credit_card.irregular_amount()
-    return credit_card.transaction()'''
-
 def parse_args(argslist):
     parser = ArgumentParser()
     parser.add_argument("file", help="a csv file containing credit card info")
