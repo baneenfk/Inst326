@@ -59,8 +59,9 @@ class Credit_Card_Holder():
         test2 = self.df2['last'] == last_name
         both = test & test2 
         user_name = self.df2[both]
+        user_name2 = user_name.sort_values(by='date',ascending=False)
         self.user_name = user_name
-        print(user_name.head(20))
+        print(user_name2.head(20))
     def mean_amount(self): 
         """ The method determines the mean of transactions and prints the amount. 
 
@@ -97,7 +98,7 @@ class Credit_Card_Holder():
                 count += 1
             else:
                 count += 0
-        print(f'There are {count} charges that occured at irregular times.')
+        print(f'There are {count} charges that occured at irregular times!')
 
     
     def irregular_amount(self,x): 
