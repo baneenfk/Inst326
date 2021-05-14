@@ -46,6 +46,15 @@ class Credit_Card_Holder():
             last_name(str): The last name of the credit card holder. 
 
         """
+        fname = self.df2["first"].tolist()
+        lname = self.df2["last"].tolist()
+        self.new = []
+        for x in fname:
+            if first_name not in fname:
+                raise KeyError("Name not in List")
+        for y in lname:
+            if last_name not in lname:
+                raise KeyError("Name not in List") 
         test = self.df2['first'] == first_name
         test2 = self.df2['last'] == last_name
         both = test & test2 
