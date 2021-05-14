@@ -51,7 +51,7 @@ class Credit_Card_Holder():
         both = test & test2 
         user_name = self.df2[both]
         self.user_name = user_name
-        print(user_name)
+        print(user_name.head(20))
     def mean_amount(self): 
         """ The method determines the mean of transactions and prints the amount. 
 
@@ -64,18 +64,15 @@ class Credit_Card_Holder():
             irregular time. 
             Args:
         """
-        vals = self.user_name["time"]
-        new = []
-        self.new = new
+        vals = self.user_name["time"].tolist()
+        self.new = []
         for x in vals:
-            if x == 0 or x == 1 or x == 2 or x ==3 or x ==4 or x ==5:
+            if x[0] == "0" or x[0] == "1" or x[0] == "2" or x[0] == "3" or x[0] == "4" or x[0] == "5":
                 result = 1 
-                new.append(result)
+                self.new.append(result)
             else:
                 result = 0 
-        print(f'what is happening{new}')
-        print(vals)
-    
+                self.new.append(result)
     def irregular_times_count(self,x): 
         """ The method counts how many times transcations occured outside of 
             regular business hours. 
@@ -112,8 +109,7 @@ class Credit_Card_Holder():
                      count += 1
                 else:
                      count += 0
-        print(f'There are {count} charges that raise a flag!') 
-    
+        print(f'There are {count} charges that have an irregular amount!') 
     
     def transactions(self): 
         """The method creates a line graph with the date of the transaction and
