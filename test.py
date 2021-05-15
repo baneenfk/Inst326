@@ -11,6 +11,10 @@ def test_user(credit_card):
     assert (x['first'] == "Jeff").all()
     assert (x['last'] == "Elliott").all()
     assert len(x) == 20 
+    with pytest.raises(KeyError):
+        credit_card.user("Jakd",("10"))
+    with pytest.raises(KeyError):
+        credit_card.user("7",("1fjjf"))
     
 def test_irregular_times(credit_card):
     #Test
