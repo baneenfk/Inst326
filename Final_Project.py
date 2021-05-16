@@ -61,6 +61,7 @@ class Credit_Card_Holder():
         self.user_name = user_name
         print(user_name2.head(20))
         return user_name2.head(20)
+    
     def mean_amount(self): 
         """ The method determines the mean of transactions and prints the amount. 
 
