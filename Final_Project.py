@@ -3,6 +3,7 @@ import sys
 import pandas as pd
 from argparse import ArgumentParser
 import matplotlib.pyplot as plt
+import time
 
 class Credit_Card_Holder(): 
     """ This is our first class used to extract information we want to pull out
@@ -12,11 +13,6 @@ class Credit_Card_Holder():
             amount, and date. 
             df2(dataframe): The data consisting of first name, last name, 
             amount, and date. 
-            first_name(str): The first name of the credit card holder.
-            last_name(str): The last name of the credit card holder.
-            amount(str): The amount of each transaction. 
-            date(str): The date of each transaction.
-            time(str): The amount of each transaction.
     """
     
     def __init__(self,file):
@@ -30,11 +26,6 @@ class Credit_Card_Holder():
         df2[['date', 'time']] = df['trans_date_trans_time'].str.split(' ', expand=True)
         df2.loc[:,'time'] = df2['time'].apply(lambda x :str(x).split(':')[0])
         self.df2 = df2 
-        self.first_name = self.df2["first"]
-        self.last_name = self.df2["last"]
-        self.amount  = self.df2["amt"]
-        self.date = self.df2["date"]
-        self.time = self.df2["time"]
 
     def user(self, first_name, last_name): 
         """ The method will seperate the date column into two columns date and 
@@ -42,7 +33,6 @@ class Credit_Card_Holder():
             Args: 
             first_name(str): The first name of the credit card holder.
             last_name(str): The last name of the credit card holder. 
-
         """
         fname = self.df2["first"].tolist()
         lname = self.df2["last"].tolist()
@@ -57,16 +47,22 @@ class Credit_Card_Holder():
         test2 = self.df2['last'] == last_name
         both = test & test2 
         user_name = self.df2[both]
-        user_name2 = user_name.sort_values(by='date',ascending=False)
         self.user_name = user_name
-        print(user_name2.head(20))
-        return user_name2.head(20)
+        return user_name.head(20)
     
+    def last_20_transactions(self):
+        """
+        """
+        user_name2 = self.user_name.sort_values(by='date',ascending=False)
+        time.sleep(1)
+        print(user_name2.head(20))
+        
     def mean_amount(self): 
         """ The method determines the mean of transactions and prints the amount. 
 
         """
         self.mean = self.user_name['amt'].mean()
+        time.sleep(1)
         print(f'The mean of all charges are {self.mean}')
 
     def irregular_times(self): 
@@ -87,6 +83,7 @@ class Credit_Card_Holder():
             Returns:
                 int: The transactions that occur at an irrgular time.
         """
+        time.sleep(1)
         print(f'There are {count} charges that occured at irregular times!')
     
     def irregular_amount(self): 
@@ -102,6 +99,7 @@ class Credit_Card_Holder():
         means = self.user_name['amt']
         item = means[means >= 500 + self.mean]
         count = item.count()
+        time.sleep(1)
         print(f'There are {count} charges that have an irregular amount!')
         return count
     
@@ -115,6 +113,7 @@ class Credit_Card_Holder():
                 line graph: Of all transcations.
         """
         self.user_name.plot.scatter(x = "amt", y = "date", title = "Credit Card Transactions")
+        time.sleep(1)
         plt.show()
     
 def main(file):
@@ -128,7 +127,7 @@ def main(file):
     value1 = input("Enter cardholders FIRST Name:\n").title()
     value2 = input("Enter cardholders LAST Name:\n").title()
     credit_card.user(value1,value2)
-    #credit_card.mean_amount()
+    credit_card.last_20_transactions()
     y = credit_card.irregular_times()
     credit_card.irregular_times_count(y)
     credit_card.irregular_amount()
