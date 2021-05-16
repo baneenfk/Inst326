@@ -1,4 +1,3 @@
-import numpy as np
 import sys
 import pandas as pd
 from argparse import ArgumentParser
