@@ -6,7 +6,7 @@ The program requires the user to input the credit card holder's first and last n
 To run Final_Project.py you must enter the following into the terminal's command line: 
 python Final_Project.py fraudTest1.csv.
 The input will require a first name and the last name. The following are some examples that are found in the dataset: 
-First/Last 
+First/Last:
 Adam/Riddle,
 Jeff/Elliott,
 Arraon/Murray. 
