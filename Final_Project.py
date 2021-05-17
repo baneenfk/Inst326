@@ -6,15 +6,17 @@ import time
 
 class Credit_Card_Holder(): 
     """ A class used to determine potentially fraudulent transactions.
-        Attributes:
-            file(str): The file is a CSV that holds the transaction records. 
+    Attributes:
+        file(str): The file is a CSV that holds the transaction records. 
     """
     
     def __init__(self,file):
         """ The method exctarcts the databse as a DataFrame. Then creates a new 
-            DataFrame with only the columns required.
-            Args:
-                file(str): The file is a CSV that holds the transaction records.
+            DataFrame with a filter using only columns required.
+        Args:
+            file(str): The file is a CSV that holds the transaction records.
+        Side effects: 
+            Set a value to a copy of a slice from a DataFrame.
         """
         df = pd.read_csv(file)
         df2 = df[["first", "last", "amt"]]
@@ -25,15 +27,15 @@ class Credit_Card_Holder():
     def user(self, first_name, last_name): 
         """ The method will seperate the date column into two columns date and 
             time.
-            Args: 
-                first_name(str): The first name of the credit card holder.
-                last_name(str): The last name of the credit card holder. 
-            Raises: 
-                KeyError: The first name must be in the first name column.
-                KeyError: The last name must be in the last name column. 
-            Returns: 
-                str: A filtered dataframe that consist of the information 
-                associated with the first and last name entered into the input. 
+        Args: 
+            first_name(str): The first name of the credit card holder.
+            last_name(str): The last name of the credit card holder. 
+        Raises: 
+            KeyError: The first name must be in the first name column.
+            KeyError: The last name must be in the last name column. 
+        Returns: 
+            str: A filtered dataframe that consist of the information 
+            associated with the first and last name entered into the input. 
         """
         fname = self.df2["first"].tolist()
         lname = self.df2["last"].tolist()
@@ -78,8 +80,8 @@ class Credit_Card_Holder():
     def irregular_times_count(self,count): 
         """ The method counts how many times transcations occured at irregular 
             times. 
-            Args:
-                count(int): The count of transcations that occured at irregular 
+        Args:
+            count(int): The count of transcations that occured at irregular 
             times.
         """
         time.sleep(1)
@@ -91,8 +93,8 @@ class Credit_Card_Holder():
     def irregular_amount(self): 
         """The method determines if a transaction is an a irregular 
             amount. 
-            Returns:
-                int: The number of transcations that occur at an irrgular time.
+        Returns:
+            int: The number of transcations that occur at an irrgular time.
         """
         self.mean_amount()
         means = self.user_name['amt']
@@ -116,8 +118,8 @@ class Credit_Card_Holder():
 def main(file):
     """ The main function will allow the user of the program to enter a credit 
         card owners name and will display potentially fraudulent transactions.
-        Args:
-            file(str): The file is a CSV that holds the transaction records.
+    Args:
+        file(str): The file is a CSV that holds the transaction records.
     """ 
     credit_card = Credit_Card_Holder(file)
     value1 = input("Enter cardholders FIRST Name:\n").title()
@@ -130,8 +132,17 @@ def main(file):
     credit_card.transactions()
  
 def parse_args(argslist):
+    """ Parse command-line arguments.
+    Expect three mandatory arguments:
+        - file: a path to a CSV file containing credit card transactions
+    Args:
+        arglist (list of str): arguments from the command line.
+    
+    Returns:
+        namespace: the parsed arguments, as a namespace.
+    """
     parser = ArgumentParser()
-    parser.add_argument("file", help="a csv file containing credit card info")
+    parser.add_argument("file", help="a csv file containing credit card transactions")
     return parser.parse_args(argslist)
 
 if __name__ == "__main__":
