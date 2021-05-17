@@ -5,20 +5,16 @@ import matplotlib.pyplot as plt
 import time
 
 class Credit_Card_Holder(): 
-    """ This is our first class used to extract information we want to pull out
-        from our datasets.
+    """ A class used to determine potentially fraudulent transactions.
         Attributes:
-            file(csv file): The database consisting of first name, last name, 
-            amount, and date. 
-            df2(dataframe): The data consisting of first name, last name, 
-            amount, and date. 
+            file(str): The file is a CSV that holds the transaction records. 
     """
     
     def __init__(self,file):
         """ The method exctarcts the databse as a DataFrame. Then creates a new 
             DataFrame with only the columns required.
             Args:
-                file(csv file): The database of credit card transactions.
+                file(str): The file is a CSV that holds the transaction records.
         """
         df = pd.read_csv(file)
         df2 = df[["first", "last", "amt"]]
@@ -30,8 +26,14 @@ class Credit_Card_Holder():
         """ The method will seperate the date column into two columns date and 
             time.
             Args: 
-            first_name(str): The first name of the credit card holder.
-            last_name(str): The last name of the credit card holder. 
+                first_name(str): The first name of the credit card holder.
+                last_name(str): The last name of the credit card holder. 
+            Raises: 
+                KeyError: The first name must be in the first name column.
+                KeyError: The last name must be in the last name column. 
+            Returns: 
+                str: A filtered dataframe that consist of the information 
+                associated with the first and last name entered into the input. 
         """
         fname = self.df2["first"].tolist()
         lname = self.df2["last"].tolist()
@@ -50,47 +52,45 @@ class Credit_Card_Holder():
         return user_name.head(20)
     
     def last_20_transactions(self):
-        """
+        """ The method will print the last 20 transactions.
         """
         user_name2 = self.user_name.sort_values(by='date',ascending=False)
         time.sleep(1)
         print(user_name2.head(20))
         
     def mean_amount(self): 
-        """ The method determines the mean of transactions and prints the amount. 
-
+        """ The method determines the mean of transactions and prints the 
+        mean amount. 
         """
-        self.mean = self.user_name['amt'].mean()
+        self.means = self.user_name['amt'].mean()
+        self.mean = round(self.means, 2)
         time.sleep(1)
-        print(f'The mean of all charges are {self.mean}')
+        print(f'The mean of all charges is $ {self.mean}')
 
     def irregular_times(self): 
         """ The method determines if the time a transaction occured is at a 
             irregular time. 
-            Args:
         """
         irr_time = {"0","1","2","3","4","5"}
         irr_time2 = self.user_name["time"]
         return irr_time2[irr_time2.isin(irr_time)].count()
 
     def irregular_times_count(self,count): 
-        """ The method counts how many times transcations occured outside of 
-            regular business hours. 
+        """ The method counts how many times transcations occured at irregular 
+            times. 
             Args:
-                name(str): The name of the credit card holder.
-                time(int): The time the transaction took place. 
-            Returns:
-                int: The transactions that occur at an irrgular time.
+                count(int): The count of transcations that occured at irregular 
+            times.
         """
         time.sleep(1)
-        print(f'There are {count} charges that occured at irregular times!')
+        if count == 1: 
+            print(f'There is {count} charge that occured at an irregular time!')
+        else:
+            print(f'There are {count} charges that occured at irregular times!')
     
     def irregular_amount(self): 
         """The method determines if a transaction is an a irregular 
             amount. 
-            Args:
-                name(str): The name of the credit card holder.
-                amount(float): The amount of a transaction. 
             Returns:
                 int: The number of transcations that occur at an irrgular time.
         """
@@ -99,17 +99,15 @@ class Credit_Card_Holder():
         item = means[means >= 500 + self.mean]
         count = item.count()
         time.sleep(1)
-        print(f'There are {count} charges that have an irregular amount!')
+        if count == 1: 
+            print(f'There is {count} charge that has an irregular amount!')
+        else:
+            print(f'There are {count} charges that have an irregular amount!')
         return count
     
     def transactions(self): 
-        """The method creates a line graph with the date of the transaction and
-            the amount. 
-            Args:
-                #amount(float): This is the amount of the charge. 
-                #date(int): This is the date of the tansaction. 
-            Returns:
-                line graph: Of all transcations.
+        """The method creates a scatter plot with the date of the transaction 
+            and the amount.
         """
         self.user_name.plot.scatter(x = "amt", y = "date", title = "Credit Card Transactions")
         time.sleep(1)
@@ -117,10 +115,9 @@ class Credit_Card_Holder():
     
 def main(file):
     """ The main function will allow the user of the program to enter a credit 
-        card owners name then will return the statistical_computaions.
+        card owners name and will display potentially fraudulent transactions.
         Args:
-            file(csv file): The database consisting of first name, last name, 
-            amount, and date.
+            file(str): The file is a CSV that holds the transaction records.
     """ 
     credit_card = Credit_Card_Holder(file)
     value1 = input("Enter cardholders FIRST Name:\n").title()
