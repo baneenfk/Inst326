@@ -7,9 +7,9 @@ To run Final_Project.py you must enter the following into the terminal's command
 python Final_Project.py fraudTest1.csv.
 The input will require a first name and the last name. The following are some examples that are found in the dataset: 
 First/Last 
-Adam/Riddle
-Jeff/Elliott
-Arraon/Murray 
+Adam/Riddle,
+Jeff/Elliott,
+Arraon/Murray. 
 The names are not case-sensitive. You can use any name provided in the testFraud1.csv 
 test.py - 
 The test.py is the pytest that we created for the final project to test the functionality of our main program. The test script consists of a pytest fixture and three 
