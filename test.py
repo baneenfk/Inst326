@@ -30,7 +30,7 @@ def test_irregular_times(credit_card):
     
 def test_irregular_amount(credit_card):
     """ Does credit_card.irregular_amount() return the correct count of 
-        transactions that had an irregular_amount. 
+        transactions that had an irregular amount. 
     """
     credit_card.user("Adam", "Riddle")
     assert credit_card.irregular_amount() == 0 
